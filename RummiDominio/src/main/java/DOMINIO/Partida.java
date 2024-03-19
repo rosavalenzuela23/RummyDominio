@@ -57,6 +57,10 @@ public class Partida {
         // TODO implement here
     }
 
+    public void validarConjuntos(){
+        Jugador jugador = this.jugadores.get(0);
+        this.tablero.validarConjuntos(jugador);
+    }
     /**
      * 
      */
@@ -82,4 +86,29 @@ public class Partida {
         
     }
 
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    public Pila getPila() {
+        return pila;
+    }
+
+    public void setPila(Pila pila) {
+        this.pila = pila;
+    }
+
+    
 }

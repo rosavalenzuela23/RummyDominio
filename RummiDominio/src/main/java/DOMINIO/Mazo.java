@@ -12,6 +12,7 @@ public class Mazo {
      * Default constructor
      */
     public Mazo() {
+        this.fichas = new ArrayList<>();
     }
 
     /**
@@ -34,4 +35,13 @@ public class Mazo {
         this.fichas.add(ficha);
     }
 
+    public List<Ficha> getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(List<Ficha> fichas) {
+        this.fichas = fichas;
+    }
+
+    
 }

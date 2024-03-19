@@ -32,5 +32,13 @@ public class Tablero {
     public void verificarMovimientosCorrectos() {
         // TODO implement here
     }
+    
+    /**
+     * 
+     */
+    public void validarConjuntos(Jugador jugador) {
+        // TODO implement here
+        
+    }
 
 }

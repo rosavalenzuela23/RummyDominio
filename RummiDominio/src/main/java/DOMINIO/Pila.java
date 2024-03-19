@@ -65,9 +65,19 @@ public class Pila {
      * @return 
      */
     public void obtenerFicha(Jugador jugador) {
-        
+  
         jugador.agregarFichaAMazo(this.fichas.getLast());
         this.fichas.removeLast();
     }
+
+    public List<Ficha> getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(List<Ficha> fichas) {
+        this.fichas = fichas;
+    }
+    
+    
 
 }

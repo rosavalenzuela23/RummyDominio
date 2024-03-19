@@ -23,4 +23,13 @@ public class FichaNumerica extends Ficha {
      */
     private GrupoFicha grupoFicha;
 
+    public byte getNumero() {
+        return numero;
+    }
+
+    public void setNumero(byte numero) {
+        this.numero = numero;
+    }
+
+    
 }

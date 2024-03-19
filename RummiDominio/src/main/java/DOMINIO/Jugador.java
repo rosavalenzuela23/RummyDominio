@@ -63,5 +63,14 @@ public class Jugador {
     public boolean isEsPrimerTurno() {
         return esPrimerTurno;
     }
+
+    public Mazo getMazo() {
+        return mazo;
+    }
+
+    public void setMazo(Mazo mazo) {
+        this.mazo = mazo;
+    }
+    
     
 }
