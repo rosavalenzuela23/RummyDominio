@@ -37,9 +37,9 @@ public class Jugador {
 
     /**
      * 
+     * @param ficha
      */
     public void agregarFichaAMazo(Ficha ficha) {
-        // TODO implement here
         this.mazo.agregarFichaAMazo(ficha);
     }
 

@@ -4,6 +4,7 @@
  */
 package DOMINIO;
 
+import exceptions.DominioException;
 import java.util.*;
 
 /**
@@ -12,16 +13,16 @@ import java.util.*;
 public class Pila {
 
     /**
-     * Default constructor
-     */
-    public Pila() {
-    }
-
-    /**
      * 
      */
     private List<Ficha> fichas;
-
+    
+    /**
+     * Default constructor
+     */
+    public Pila() {
+        this.fichas = new ArrayList<>();
+    }
 
     /**
      * 
@@ -36,36 +37,24 @@ public class Pila {
     public void pasarTurno() {
         // TODO implement here
     }
-
     /**
      * 
+     * @param jugador
+     * @throws DominioException
      */
-    public void validarFichasExistentesPozo(Jugador jugador) {
-        // TODO implement here
-         try {
-            
-            if (fichas == null || fichas.isEmpty()) {
-                
-                throw new RuntimeException("La lista de fichas está vacía o nula.");
-            } else {
-                
-                System.out.println("La lista de fichas existe y no está vacía.");
-                this.obtenerFicha(jugador);
-            }
-        } catch (Exception e) {
-           
-            System.out.println("Error: " + e.getMessage());
+    public void validarFichasExistentesPozo(Jugador jugador) throws DominioException {
+        if (fichas == null || fichas.isEmpty()) {
+            throw new DominioException("La lista de fichas está vacía o nula.");
         }
-    }
-
-    
+        System.out.println("La lista de fichas existe y no está vacía.");
+        this.obtenerFicha(jugador);
+    }    
 
     /**
      * 
-     * @return 
+     * @param jugador 
      */
     public void obtenerFicha(Jugador jugador) {
-  
         jugador.agregarFichaAMazo(this.fichas.getLast());
         this.fichas.removeLast();
     }

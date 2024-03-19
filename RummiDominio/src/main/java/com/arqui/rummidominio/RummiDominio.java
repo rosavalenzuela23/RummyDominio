@@ -6,7 +6,10 @@ package com.arqui.rummidominio;
 import DOMINIO.Partida;
 import DOMINIO.Jugador;
 import DOMINIO.*;
+import exceptions.DominioException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author natsu
@@ -50,7 +53,11 @@ public class RummiDominio {
         
         Mazo mazoParaJugador1 = new Mazo();
         jugador1.setMazo(mazoParaJugador1);
-        partidaPrueba.validarFichasExistentesPozo();
+        try {
+            partidaPrueba.validarFichasExistentesPozo();
+        } catch (DominioException ex) {
+            Logger.getLogger(RummiDominio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }

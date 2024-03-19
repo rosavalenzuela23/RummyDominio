@@ -1,7 +1,8 @@
 
 package DOMINIO;
 
-import java.util.*;
+import exceptions.DominioException;
+import java.util.List;
 
 /**
  * 
@@ -59,23 +60,19 @@ public class Partida {
 
     public void validarConjuntos(){
         Jugador jugador = this.jugadores.get(0);
-        this.tablero.validarConjuntos(jugador);
+        this.tablero.validarConjuntos();
     }
     /**
      * 
+     * @throws DominioException
      */
-    public void validarFichasExistentesPozo() {
-        // TODO implement here
+    public void validarFichasExistentesPozo() throws DominioException {
        Jugador  jugador = this.jugadores.get(0);
-       
-       if(jugador.isEsPrimerTurno() == false){
+       if (jugador.isEsPrimerTurno() == false) {
            this.pila.validarFichasExistentesPozo(jugador);
-       }else{
+       } else {
            this.terminarTurno();
        }
-       
-        
-       
     }
 
     /**
@@ -110,5 +107,8 @@ public class Partida {
         this.pila = pila;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Partida{" + "tablero=" + tablero + ", pila=" + pila + ", jugadores=" + jugadores + '}';
+    }
 }

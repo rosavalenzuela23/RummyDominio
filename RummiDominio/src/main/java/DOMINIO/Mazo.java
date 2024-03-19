@@ -9,16 +9,16 @@ import java.util.*;
 public class Mazo {
 
     /**
+     * 
+     */
+    private List<Ficha> fichas;
+    
+    /**
      * Default constructor
      */
     public Mazo() {
         this.fichas = new ArrayList<>();
     }
-
-    /**
-     * 
-     */
-    private List<Ficha> fichas;
 
     /**
      * 
@@ -31,7 +31,6 @@ public class Mazo {
      * 
      */
     public void agregarFichaAMazo(Ficha ficha) {
-        // TODO implement here
         this.fichas.add(ficha);
     }
 
@@ -43,5 +42,8 @@ public class Mazo {
         this.fichas = fichas;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Mazo{" + "fichas=" + fichas + '}';
+    }
 }

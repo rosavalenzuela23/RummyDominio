@@ -1,7 +1,8 @@
 
 package DOMINIO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -9,15 +10,16 @@ import java.util.*;
 public class Tablero {
 
     /**
-     * Default constructor
-     */
-    public Tablero() {
-    }
-
-    /**
      * 
      */
     private List<Conjunto> conjuntos;
+    
+    /**
+     * Default constructor
+     */
+    public Tablero() {
+        this.conjuntos = new ArrayList<>();
+    }
 
     /**
      * 
@@ -36,9 +38,8 @@ public class Tablero {
     /**
      * 
      */
-    public void validarConjuntos(Jugador jugador) {
+    public void validarConjuntos() {
         // TODO implement here
         
     }
-
 }

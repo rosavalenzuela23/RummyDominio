@@ -4,17 +4,40 @@
  */
 package DOMINIO;
 
-import java.util.*;
+import java.awt.Color;
 
 /**
  * 
  */
 public class ColorFicha {
 
+    private GrupoFicha grupoFicha;
+    private Color color;
+    
     /**
      * Default constructor
      */
     public ColorFicha() {
     }
 
+    public GrupoFicha getGrupoFicha() {
+        return grupoFicha;
+    }
+
+    public void setGrupoFicha(GrupoFicha grupoFicha) {
+        this.grupoFicha = grupoFicha;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "ColorFicha{" + "grupoFicha=" + grupoFicha + ", color=" + color + '}';
+    }
 }
