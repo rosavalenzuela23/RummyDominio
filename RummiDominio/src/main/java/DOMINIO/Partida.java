@@ -9,27 +9,31 @@ import java.util.List;
  */
 public class Partida {
 
-    /**
-     * Default constructor
-     */
-    public Partida() {
-    }
-
-    /**
-     * 
-     */
+    private static Partida instancia;
     private Tablero tablero;
-
-    /**
-     * 
-     */
     private Pila pila;
-
-    /**
-     * 
-     */
     private List<Jugador> jugadores;
-
+    
+    
+    /**
+     * Constructor privado
+     */
+    private Partida() {
+        this.tablero = Tablero.obtenerInstancia();
+        this.pila = Pila.obtenerInstancia();
+    }
+    
+    /**
+     * Método singlenton que obtine la instancia de la partida creada
+     * @return la instancia de la Partida
+     */
+    public static Partida obtenerInstancia(){
+        if(Partida.instancia == null){
+            Partida.instancia =  new Partida();
+        }
+        
+        return Partida.instancia;
+    }
     /**
      * 
      */
@@ -43,10 +47,7 @@ public class Partida {
     public void verificaMovimientosHechos() {
         // TODO implement here
     }
-
-    /**
-     * 
-     */
+    
     public void terminarJuego() {
         // TODO implement here
     }
@@ -59,28 +60,20 @@ public class Partida {
     }
 
     public void validarConjuntos(){
-        Jugador jugador = this.jugadores.get(0);
-        this.tablero.validarConjuntos();
+       
     }
     /**
      * 
      * @throws DominioException
      */
     public void validarFichasExistentesPozo() throws DominioException {
-       Jugador  jugador = this.jugadores.get(0);
-       if (jugador.isEsPrimerTurno() == false) {
-           this.pila.validarFichasExistentesPozo(jugador);
-       } else {
-           this.terminarTurno();
-       }
     }
-
+      
     /**
-     * 
+     *Método que cambia el turno del jugador actual que se encuentra jugando. 
      */
     public void terminarTurno() {
-        // TODO implement here
-        
+                    
     }
 
     public List<Jugador> getJugadores() {

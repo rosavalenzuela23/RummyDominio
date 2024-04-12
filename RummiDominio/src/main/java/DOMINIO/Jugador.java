@@ -28,11 +28,7 @@ public class Jugador {
      */
     private ColorFicha fichasColor;
 
-    /**
-     * 
-     */
-    public void verificarCartasEnMazo() {
-        // TODO implement here
+    public void verificarCartasEnMazo() {    
     }
 
     /**
@@ -46,9 +42,8 @@ public class Jugador {
     /**
      * 
      */
-    public void esPrimerTurno() {
-        // TODO implement here
-        this.cambiarEstadoJugador();
+    public boolean esPrimerTurno() {
+        return true;
     }
 
     /**

@@ -20,9 +20,6 @@ public class Mazo {
         this.fichas = new ArrayList<>();
     }
 
-    /**
-     * 
-     */
     public void tieneFichas() {
         // TODO implement here
     }

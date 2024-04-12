@@ -12,16 +12,25 @@ import java.util.*;
  */
 public class Pila {
 
-    /**
-     * 
-     */
+    private static Pila instancia;
     private List<Ficha> fichas;
     
     /**
      * Default constructor
      */
-    public Pila() {
+    private Pila() {
         this.fichas = new ArrayList<>();
+    }
+    
+    /**
+     * Método singleton que regresa la instancia de la pila en la partida
+     * @return la instancia de la Pila
+     */
+    public static Pila obtenerInstancia(){
+        if(Pila.instancia == null){
+            Pila.instancia = new Pila();
+        }
+        return Pila.instancia;
     }
 
     /**
