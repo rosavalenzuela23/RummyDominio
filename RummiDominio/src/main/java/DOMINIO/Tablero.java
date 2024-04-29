@@ -1,13 +1,14 @@
 
 package DOMINIO;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
  */
-public class Tablero {
+public class Tablero implements Serializable {
 
     private static Tablero instancia;
     private List<Conjunto> conjuntos;

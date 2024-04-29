@@ -1,12 +1,14 @@
 
 package DOMINIO;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
  */
-public class Mazo {
+public class Mazo implements Serializable {
 
     /**
      * 

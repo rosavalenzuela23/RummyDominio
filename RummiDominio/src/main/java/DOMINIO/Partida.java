@@ -2,12 +2,13 @@
 package DOMINIO;
 
 import exceptions.DominioException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 
  */
-public class Partida {
+public class Partida implements Serializable {
 
     private static Partida instancia;
     private Tablero tablero;

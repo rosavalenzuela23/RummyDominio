@@ -4,12 +4,13 @@
  */
 package DOMINIO;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * 
  */
-public abstract class Conjunto {
+public abstract class Conjunto implements Serializable {
 
     /**
      * Default constructor

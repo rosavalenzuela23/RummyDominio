@@ -5,12 +5,14 @@
 package DOMINIO;
 
 import exceptions.DominioException;
-import java.util.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
  */
-public class Pila {
+public class Pila implements Serializable {
 
     private static Pila instancia;
     private List<Ficha> fichas;
@@ -64,8 +66,8 @@ public class Pila {
      * @param jugador 
      */
     public void obtenerFicha(Jugador jugador) {
-        jugador.agregarFichaAMazo(this.fichas.getLast());
-        this.fichas.removeLast();
+//        jugador.agregarFichaAMazo(this.fichas.getLast());
+//        this.fichas.removeLast();
     }
 
     public List<Ficha> getFichas() {

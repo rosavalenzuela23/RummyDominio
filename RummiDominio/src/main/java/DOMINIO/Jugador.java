@@ -1,11 +1,12 @@
 
 package DOMINIO;
-import java.util.*;
+
+import java.io.Serializable;
 
 /**
  * 
  */
-public class Jugador {
+public class Jugador implements Serializable {
 
     /**
      * Default constructor
