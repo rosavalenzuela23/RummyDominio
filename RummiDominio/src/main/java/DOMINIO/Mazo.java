@@ -1,6 +1,7 @@
 
 package DOMINIO;
 
+import interaces.LogicaMazo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * 
  */
-public class Mazo implements Serializable {
+public class Mazo implements Serializable, LogicaMazo {
 
     /**
      * 
@@ -28,6 +29,7 @@ public class Mazo implements Serializable {
 
     /**
      * 
+     * @param ficha la ficha que se va a eliminar del mazo
      */
     public void agregarFichaAMazo(Ficha ficha) {
         this.fichas.add(ficha);
@@ -45,4 +47,10 @@ public class Mazo implements Serializable {
     public String toString() {
         return "Mazo{" + "fichas=" + fichas + '}';
     }
+
+    @Override
+    public void eliminarFichasJugador(Ficha ficha) {
+        fichas.remove(ficha);
+    }
+    
 }

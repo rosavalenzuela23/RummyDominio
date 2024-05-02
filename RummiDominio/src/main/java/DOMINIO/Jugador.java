@@ -1,17 +1,21 @@
 
 package DOMINIO;
 
+import interaces.LogicaJugador;
 import java.io.Serializable;
 
 /**
  * 
  */
-public class Jugador implements Serializable {
+public class Jugador implements Serializable, LogicaJugador {
 
+    private boolean primerTurno = true;
+    
     /**
      * Default constructor
      */
     public Jugador() {
+        
     }
 
     /**
@@ -42,9 +46,11 @@ public class Jugador implements Serializable {
 
     /**
      * 
+     * @return regresa un boolean para saber si es el primer turno
      */
+    @Override
     public boolean esPrimerTurno() {
-        return true;
+        return this.primerTurno;
     }
 
     /**
@@ -52,12 +58,8 @@ public class Jugador implements Serializable {
      */
     public void cambiarEstadoJugador() {
         // TODO implement here
-        this.esPrimerTurno = true;
+        this.esPrimerTurno = false;
         
-    }
-
-    public boolean isEsPrimerTurno() {
-        return esPrimerTurno;
     }
 
     public Mazo getMazo() {
@@ -67,6 +69,5 @@ public class Jugador implements Serializable {
     public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
-    
     
 }

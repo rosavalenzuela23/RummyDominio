@@ -4,13 +4,14 @@
  */
 package DOMINIO;
 
+import interaces.LogicaConjunto;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 
  */
-public abstract class Conjunto implements Serializable {
+public abstract class Conjunto implements Serializable, LogicaConjunto{
 
     /**
      * Default constructor
@@ -44,5 +45,20 @@ public abstract class Conjunto implements Serializable {
      * @return return true en caso de ser valido el conjunto, return false caso contrario 
      */
     public abstract boolean validarConjunto();
+
+    @Override
+    public void verificarColoresFicha() {
+
+    }
+
+    @Override
+    public void agregarFicha() {
+
+    }
+
+    @Override
+    public void verificarColorFicha() {
+
+    }
 
 }

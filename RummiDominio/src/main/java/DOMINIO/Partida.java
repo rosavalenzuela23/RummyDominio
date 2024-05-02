@@ -2,13 +2,14 @@
 package DOMINIO;
 
 import exceptions.DominioException;
+import interaces.Blackboard;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 
  */
-public class Partida implements Serializable {
+public class Partida implements Serializable, Blackboard {
 
     private static Partida instancia;
     private Tablero tablero;
@@ -104,5 +105,15 @@ public class Partida implements Serializable {
     @Override
     public String toString() {
         return "Partida{" + "tablero=" + tablero + ", pila=" + pila + ", jugadores=" + jugadores + '}';
+    }
+
+    @Override
+    public void actualizarDatos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarMensajeErro() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
