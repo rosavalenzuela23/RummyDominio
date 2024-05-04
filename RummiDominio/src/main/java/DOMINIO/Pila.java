@@ -5,14 +5,13 @@
 package DOMINIO;
 
 import exceptions.DominioException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
  */
-public class Pila implements Serializable {
+public class Pila {
 
     private static Pila instancia;
     private List<Ficha> fichas;

@@ -2,14 +2,13 @@
 package DOMINIO;
 
 import interaces.LogicaMazo;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
  */
-public class Mazo implements Serializable, LogicaMazo {
+public class Mazo implements LogicaMazo {
 
     /**
      * 

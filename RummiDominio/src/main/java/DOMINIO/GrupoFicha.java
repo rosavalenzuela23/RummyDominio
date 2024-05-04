@@ -4,12 +4,10 @@
  */
 package DOMINIO;
 
-import java.io.Serializable;
-
 /**
  * 
  */
-public enum GrupoFicha implements Serializable {
+public enum GrupoFicha {
     AMARILLO,
     ROJO,
     AZUL,

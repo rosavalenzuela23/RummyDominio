@@ -3,13 +3,12 @@ package DOMINIO;
 
 import exceptions.DominioException;
 import interaces.Blackboard;
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * 
  */
-public class Partida implements Serializable, Blackboard {
+public class Partida implements Blackboard {
 
     private static Partida instancia;
     private Tablero tablero;

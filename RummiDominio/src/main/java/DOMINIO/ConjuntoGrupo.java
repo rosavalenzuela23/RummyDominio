@@ -4,7 +4,7 @@ package DOMINIO;
 /**
  * 
  */
-public class ConjuntoGrupo extends Conjunto{
+public class ConjuntoGrupo extends Conjunto {
 
     /**
      * Default constructor

@@ -5,12 +5,11 @@
 package DOMINIO;
 
 import java.awt.Color;
-import java.io.Serializable;
 
 /**
  * 
  */
-public class ColorFicha implements Serializable {
+public class ColorFicha {
 
     private GrupoFicha grupoFicha;
     private Color color;
