@@ -5,13 +5,12 @@
 package DOMINIO;
 
 import interaces.LogicaConjunto;
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * 
  */
-public abstract class Conjunto implements Serializable, LogicaConjunto{
+public abstract class Conjunto implements LogicaConjunto {
 
     /**
      * Default constructor

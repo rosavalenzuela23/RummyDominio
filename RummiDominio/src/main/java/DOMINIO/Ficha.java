@@ -1,12 +1,10 @@
 
 package DOMINIO;
 
-import java.io.Serializable;
-
 /**
  * 
  */
-public class Ficha implements Serializable {
+public class Ficha {
 
     /**
      * Default constructor

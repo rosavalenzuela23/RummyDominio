@@ -4,7 +4,7 @@ package DOMINIO;
 /**
  * 
  */
-public class ConjuntoSecuencia extends Conjunto{
+public class ConjuntoSecuencia extends Conjunto {
 
     /**
      * Default constructor

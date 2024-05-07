@@ -2,12 +2,11 @@
 package DOMINIO;
 
 import interaces.LogicaJugador;
-import java.io.Serializable;
 
 /**
  * 
  */
-public class Jugador implements Serializable, LogicaJugador {
+public class Jugador implements LogicaJugador {
 
     private boolean primerTurno = true;
     
