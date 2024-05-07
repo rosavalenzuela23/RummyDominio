@@ -1,14 +1,16 @@
 
 package DOMINIO;
 
+import interaces.LogicaConjunto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import interaces.LogicaTablero;
 
 /**
  * 
  */
-public class Tablero implements Serializable {
+public class Tablero implements Serializable, LogicaTablero{
 
     private static Tablero instancia;
     private List<Conjunto> conjuntos;
@@ -47,9 +49,34 @@ public class Tablero implements Serializable {
     
     /**
      * 
+     * @return 
      */
-    public void validarConjuntos() {
-        // TODO implement here
+    @Override
+    public List<Conjunto> validarConjuntos() {
         
+        for (LogicaConjunto conjunto : obtenerLogicasConjuntos()) {
+            conjunto.validarConjunto();
+        }
+        return this.conjuntos;
+    }
+
+    private List<LogicaConjunto> obtenerLogicasConjuntos(){
+        
+        List<LogicaConjunto> lc = new ArrayList<>();
+        for (LogicaConjunto logicaConjunto : this.conjuntos) {
+            lc.add(logicaConjunto);
+        }
+     
+        return lc;
+    }
+    
+    @Override
+    public void eliminarConjunto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void desmarcarConjuntos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

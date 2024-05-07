@@ -77,7 +77,7 @@ public class RummiDominio {
         
         conjuntoPrueba.setFichas(fichas);
         
-        conjuntoPrueba.validarConjunto();
+//        conjuntoPrueba.validarConjunto();
         
     }
 }

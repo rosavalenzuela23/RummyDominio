@@ -36,14 +36,17 @@ public abstract class Conjunto implements Serializable, LogicaConjunto{
      * Método que valida sí el conjunto es igual o mayor de 30 puntos en la sumatoria de las fichas
      * @return true en caso de completar 30 puntos o más, false caso contrario
      */
+    @Override
     public boolean validar30Puntos(){
         return true;
     }
     
     /**
      * Método abstracto validarConjuntos() el cual es implementado por la clase ConjuntoGrupo o ConjuntoSecuencia
+     * @param conjunto El conjunto a validar si esta bien armado
      * @return return true en caso de ser valido el conjunto, return false caso contrario 
      */
+    @Override
     public abstract boolean validarConjunto();
 
     @Override

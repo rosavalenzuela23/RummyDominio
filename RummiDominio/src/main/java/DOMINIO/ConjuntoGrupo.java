@@ -23,6 +23,7 @@ public class ConjuntoGrupo extends Conjunto{
 
     /**
      * Método validarConjuntos() que verifica si el grupo de fichas es válido
+     * @param conjunto el conjutno a validar sí esta bien armado
      * @return true es válido, false caso contrario
      */
     @Override

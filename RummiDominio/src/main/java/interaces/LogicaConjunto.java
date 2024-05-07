@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interaces;
+import DOMINIO.Conjunto;
 
 /**
  *
@@ -15,5 +16,9 @@ public interface LogicaConjunto {
     public abstract void agregarFicha();
     
     public void verificarColorFicha();
+    
+    public boolean validarConjunto();
+    
+    public boolean validar30Puntos();
     
 }

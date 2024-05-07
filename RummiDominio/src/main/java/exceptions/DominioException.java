@@ -6,7 +6,7 @@ package exceptions;
 
 /**
  *
- * @author oscar
+ * @author 
  */
 public class DominioException extends Exception {
     public DominioException() {

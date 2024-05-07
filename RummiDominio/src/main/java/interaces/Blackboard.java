@@ -11,7 +11,7 @@ package interaces;
 public interface Blackboard {
     
     public void actualizarDatos();
-    
-    public void actualizarMensajeErro();
+    public void actualizarDatos(LogicaTablero lt);
+    public void actualizarMensajeError(String mensajeError);
     
 }

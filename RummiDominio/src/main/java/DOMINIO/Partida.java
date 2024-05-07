@@ -3,6 +3,7 @@ package DOMINIO;
 
 import exceptions.DominioException;
 import interaces.Blackboard;
+import interaces.LogicaTablero;
 import java.io.Serializable;
 import java.util.List;
 
@@ -108,12 +109,17 @@ public class Partida implements Serializable, Blackboard {
     }
 
     @Override
-    public void actualizarDatos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void actualizarDatos(LogicaTablero lt) {
+        this.tablero = (Tablero) lt;
+    }
+    
+    @Override
+    public void actualizarMensajeError(String mensajeError) {
+        System.out.println(mensajeError);
     }
 
     @Override
-    public void actualizarMensajeErro() {
+    public void actualizarDatos() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
