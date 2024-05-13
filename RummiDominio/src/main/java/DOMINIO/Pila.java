@@ -34,6 +34,18 @@ public class Pila {
         return Pila.instancia;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Pila copia = new Pila(); //Clonación superficial
+        
+        // Clonación profunda
+        for (Ficha ficha : this.fichas) {
+            Ficha fichaClonada = (Ficha) ficha.clone(); 
+            copia.fichas.add(fichaClonada); 
+        }
+        return copia;
+    }
+    
     /**
      * 
      */

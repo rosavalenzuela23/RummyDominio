@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 
  */
-public class Mazo implements LogicaMazo {
+public class Mazo implements LogicaMazo, Cloneable {
 
     /**
      * 
@@ -22,8 +22,27 @@ public class Mazo implements LogicaMazo {
         this.fichas = new ArrayList<>();
     }
 
-    public void tieneFichas() {
+     @Override
+    public Object clone() throws CloneNotSupportedException {
+        Mazo copia = (Mazo) super.clone(); // Clonación superficial
+
+        // Clonación profunda
+        copia.fichas = new ArrayList<>(); //Lista para guardar las fichas clonadas
+        for (Ficha ficha : this.fichas) {
+            Ficha fichaClonada = (Ficha) ficha.clone(); //Clonar la ficha
+            copia.fichas.add(fichaClonada); 
+        }
+
+        return copia;
+    }
+    
+    /**
+     * Método que comprueba sí el mazo del jugador tiene fichas
+     * @return true si tiene fichas, false caso contrario
+     */
+    public boolean tieneFichas() {
         // TODO implement here
+        return !this.fichas.isEmpty();
     }
 
     /**

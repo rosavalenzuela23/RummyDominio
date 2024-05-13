@@ -10,7 +10,7 @@ import interaces.LogicaTablero;
 /**
  * 
  */
-public class Tablero implements Serializable, LogicaTablero{
+public class Tablero implements Serializable, LogicaTablero, Cloneable{
 
     private static Tablero instancia;
     private List<Conjunto> conjuntos;
@@ -33,6 +33,29 @@ public class Tablero implements Serializable, LogicaTablero{
         return Tablero.instancia;
     }
     
+    /**
+     * Método para hacer una copia del tablero
+     * @return
+     * @throws CloneNotSupportedException 
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Tablero copia = new Tablero(); //Clonación superficial
+        
+        //Clonación profunda
+        for (Conjunto conjunto : this.conjuntos) {
+            copia.conjuntos.add((Conjunto) conjunto.clone());
+        }
+        return copia;
+    }
+    
+    public void setConjuntos(List<Conjunto> conjuntos){
+        this.conjuntos = conjuntos;
+    }
+    
+    public List<Conjunto> getConjuntos(){
+        return this.conjuntos;
+    }
     /**
      * 
      */
@@ -77,6 +100,6 @@ public class Tablero implements Serializable, LogicaTablero{
 
     @Override
     public void desmarcarConjuntos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("estan desmarcados los conjuntos");
     }
 }

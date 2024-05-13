@@ -6,9 +6,9 @@ import interaces.LogicaJugador;
 /**
  * 
  */
-public class Jugador implements LogicaJugador {
+public class Jugador implements LogicaJugador, Cloneable {
 
-    private boolean primerTurno = true;
+    
     
     /**
      * Default constructor
@@ -25,12 +25,28 @@ public class Jugador implements LogicaJugador {
     /**
      * 
      */
-    private boolean esPrimerTurno;
-
+    private boolean esPrimerTurno = true;
+    
     /**
      * 
      */
     private ColorFicha fichasColor;
+    
+    /**
+     * Método para hacer una copia de los jugadores
+     * @return
+     * @throws CloneNotSupportedException 
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Jugador copia = (Jugador) super.clone(); //Clonación superficial
+
+        //Clonación profunda
+        copia.mazo = (Mazo) this.mazo.clone();
+
+        return copia;
+    }
+    
 
     public void verificarCartasEnMazo() {    
     }
@@ -49,7 +65,7 @@ public class Jugador implements LogicaJugador {
      */
     @Override
     public boolean esPrimerTurno() {
-        return this.primerTurno;
+        return this.esPrimerTurno;
     }
 
     /**
@@ -69,4 +85,7 @@ public class Jugador implements LogicaJugador {
         this.mazo = mazo;
     }
     
+    public void setTurno(boolean estado){
+        this.esPrimerTurno = estado;
+    }
 }

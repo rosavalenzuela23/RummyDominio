@@ -5,6 +5,7 @@
 package DOMINIO;
 
 import interaces.LogicaConjunto;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,25 @@ public abstract class Conjunto implements LogicaConjunto {
      */
     private List<Ficha> fichas;
 
+    /**
+     * Método para hacer una copia del conjunto
+     * @return
+     * @throws CloneNotSupportedException 
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Conjunto conjuntoClonado = (Conjunto) super.clone(); //Clonación superficial
+
+        // Clonación profunda
+        conjuntoClonado.fichas = new ArrayList<>(); //Lista para guardar las fichas clonadas
+        for (Ficha ficha : this.fichas) {
+            Ficha fichaClonada = (Ficha) ficha.clone(); // Clonar la ficha
+            conjuntoClonado.fichas.add(fichaClonada);
+        }
+
+        return conjuntoClonado;
+    }
+    
     public List<Ficha> getFichas() {
         return fichas;
     }
