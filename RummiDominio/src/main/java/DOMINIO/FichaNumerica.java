@@ -1,11 +1,12 @@
 package DOMINIO;
 
+import interaces.FichaDTO;
 import java.util.Objects;
 
 /**
  *
  */
-public class FichaNumerica extends Ficha {
+public class FichaNumerica extends Ficha implements FichaDTO {
 
     /**
      * Default constructor
@@ -28,18 +29,22 @@ public class FichaNumerica extends Ficha {
         this.numero = numero;
     }
 
+    @Override
     public byte getNumero() {
         return numero;
     }
 
+    @Override
     public void setNumero(byte numero) {
         this.numero = numero;
     }
 
+    @Override
     public GrupoFicha getGrupoFicha() {
         return grupoFicha;
     }
 
+    @Override
     public void setGrupoFicha(GrupoFicha grupoFicha) {
         this.grupoFicha = grupoFicha;
     }

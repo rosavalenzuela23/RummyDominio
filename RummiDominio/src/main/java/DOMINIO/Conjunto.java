@@ -4,6 +4,7 @@
  */
 package DOMINIO;
 
+import interaces.ConjuntoDTO;
 import interaces.LogicaConjunto;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  *
  */
-public abstract class Conjunto implements LogicaConjunto {
+public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
 
     /**
      * Default constructor
@@ -52,10 +53,12 @@ public abstract class Conjunto implements LogicaConjunto {
         return conjuntoClonado;
     }
 
+    @Override
     public List<Ficha> getFichas() {
         return fichas;
     }
 
+    @Override
     public void setFichas(List<Ficha> fichas) {
         this.fichas = fichas;
     }
