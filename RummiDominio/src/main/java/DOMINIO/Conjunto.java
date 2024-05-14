@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  */
 public abstract class Conjunto implements LogicaConjunto {
 
@@ -19,15 +19,24 @@ public abstract class Conjunto implements LogicaConjunto {
     public Conjunto() {
     }
 
+    public Conjunto(Conjunto conjunto) {
+        this.fichas = conjunto.getFichas();
+    }
+
+    public Conjunto(List<Ficha> fichas) {
+        this.fichas = fichas;
+    }
+
     /**
-     * 
+     *
      */
     private List<Ficha> fichas;
 
     /**
      * Método para hacer una copia del conjunto
+     *
      * @return
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -42,7 +51,7 @@ public abstract class Conjunto implements LogicaConjunto {
 
         return conjuntoClonado;
     }
-    
+
     public List<Ficha> getFichas() {
         return fichas;
     }
@@ -50,27 +59,32 @@ public abstract class Conjunto implements LogicaConjunto {
     public void setFichas(List<Ficha> fichas) {
         this.fichas = fichas;
     }
-    
+
     /**
-     * Método que valida sí el conjunto es igual o mayor de 30 puntos en la sumatoria de las fichas
+     * Método que valida sí el conjunto es igual o mayor de 30 puntos en la
+     * sumatoria de las fichas
+     *
      * @return true en caso de completar 30 puntos o más, false caso contrario
      */
     @Override
-    public boolean validar30Puntos(){
+    public boolean validar30Puntos() {
         return true;
     }
-    
+
     /**
-     * Método abstracto validarConjuntos() el cual es implementado por la clase ConjuntoGrupo o ConjuntoSecuencia
+     * Método abstracto validarConjuntos() el cual es implementado por la clase
+     * ConjuntoGrupo o ConjuntoSecuencia
+     *
      * @param conjunto El conjunto a validar si esta bien armado
-     * @return return true en caso de ser valido el conjunto, return false caso contrario 
+     * @return return true en caso de ser valido el conjunto, return false caso
+     * contrario
      */
     @Override
     public abstract boolean validarConjunto();
 
     @Override
-    public void verificarColoresFicha() {
-
+    public Conjunto verificarColoresFicha() {
+        return null;
     }
 
     @Override
@@ -79,8 +93,28 @@ public abstract class Conjunto implements LogicaConjunto {
     }
 
     @Override
-    public void verificarColorFicha() {
+    public Conjunto verificarColorFicha() {
 
+        FichaNumerica fichaAnterior = null;
+        for (Ficha ficha : fichas) {
+
+            if (ficha.getClass() != FichaNumerica.class) {
+                continue;
+            }
+
+            if (fichaAnterior == null) {
+                fichaAnterior = (FichaNumerica) ficha;
+                continue;
+            }
+
+            FichaNumerica numerica = (FichaNumerica) ficha;
+            if (!numerica.getGrupoFicha().equals(fichaAnterior.getGrupoFicha())) {
+                return new ConjuntoGrupo(this);
+            }
+
+        }
+
+        return new ConjuntoSecuencia(this);
     }
 
 }

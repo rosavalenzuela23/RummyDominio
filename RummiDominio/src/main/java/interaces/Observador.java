@@ -8,8 +8,8 @@ package interaces;
  *
  * @author natsu
  */
-public interface Observer {
-    
-    public void notificar();
-    
+public interface Observador {
+
+    public void notificar(Blackboard blackboard);
+
 }

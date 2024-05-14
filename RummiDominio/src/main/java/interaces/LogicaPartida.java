@@ -9,9 +9,13 @@ package interaces;
  * @author marco
  */
 public interface LogicaPartida {
-    
+
     public void terminarJuego();
+
     public void terminarTurno();
+
     public void guardarPartida();
+
     public void restuararPartida();
+
 }

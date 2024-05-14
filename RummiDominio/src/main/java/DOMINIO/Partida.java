@@ -1,29 +1,30 @@
-
 package DOMINIO;
 
 import arqui.util.PartidaSnapshot;
 import exceptions.DominioException;
 import interaces.Blackboard;
+import interaces.LogicaMazo;
 import interaces.LogicaPartida;
 import interaces.LogicaTablero;
-import interaces.Observer;
-import java.io.Serializable;
+import interaces.Observador;
+import interaces.Publicador;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 
+ *
  */
-public class Partida implements Blackboard, LogicaPartida, Cloneable{
+public class Partida implements Blackboard, LogicaPartida, Cloneable, Publicador {
 
-    private Observer subscriptor;
     private static Partida instancia;
+    protected final List<Observador> observadores;
     private Tablero tablero;
     private Pila pila;
     private List<Jugador> jugadores;
     private int numeroJugador;
-    
-    
+    private String mensaje;
+
     /**
      * Constructor privado
      */
@@ -31,108 +32,118 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable{
         this.tablero = Tablero.obtenerInstancia();
         this.pila = Pila.obtenerInstancia();
 
+        observadores = new LinkedList();
+
     }
-    
-    
+
     /**
      * Método singlenton que obtine la instancia de la partida creada
+     *
      * @return la instancia de la Partida
      */
-    public static Partida obtenerInstancia(){
-        if(Partida.instancia == null){
-            Partida.instancia =  new Partida();
+    public static Partida obtenerInstancia() {
+        if (Partida.instancia == null) {
+            Partida.instancia = new Partida();
         }
-        
+
         return Partida.instancia;
     }
-    
+
+    public static Publicador obtenerPublicador() {
+        return Partida.obtenerInstancia();
+    }
+
     /**
      * Método para hacer una copia de la partida
+     *
      * @return
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     @Override
-     public Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Partida copia = (Partida) super.clone(); // Clonación superficial
 
         // Clonación profunda
-        copia.tablero = (Tablero) this.tablero.clone(); 
+        copia.tablero = (Tablero) this.tablero.clone();
         copia.pila = (Pila) this.pila.clone();
-        copia.jugadores = new ArrayList<>(); 
+        copia.jugadores = new ArrayList<>();
         for (Jugador jugador : this.jugadores) {
             copia.jugadores.add((Jugador) jugador.clone());
         }
 
         return copia;
     }
-     
+
     /**
      * Método para obtener el jugador actual de la partida
-     * @return 
+     *
+     * @return
      */
-    public Jugador obtenerJugador(){
+    public Jugador obtenerJugador() {
         return jugadores.get(numeroJugador);
     }
+
     /**
-     * 
+     *
      */
     public void pasarTurno() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void verificaMovimientosHechos() {
         // TODO implement here
     }
-    
+
     @Override
     public void terminarJuego() {
         // TODO implement here
         System.out.println("El juego se ha terminado");
     }
 
+    @Override
+    public void guardarPartida() {
 
-    
-    public void guardarPartida(){
-        
-       PartidaSnapshot.obtenerInstancia().guardarPartida(Partida.obtenerInstancia());
+        PartidaSnapshot.obtenerInstancia().guardarPartida(Partida.obtenerInstancia());
     }
-    
-    public void restuararPartida(){
-        
+
+    @Override
+    public void restuararPartida() {
+
         instancia = PartidaSnapshot.obtenerInstancia().restaurarPartida();
     }
- 
+
     /**
-     * 
+     *
      */
     public void validarConfiguracion() {
         // TODO implement here
     }
 
-    public void validarConjuntos(){
-       
+    public void validarConjuntos() {
+
     }
+
     /**
-     * 
+     *
      * @throws DominioException
      */
     public void validarFichasExistentesPozo() throws DominioException {
     }
-      
+
     /**
-     *Método que cambia el turno del jugador actual que se encuentra jugando. 
+     * Método que cambia el turno del jugador actual que se encuentra jugando.
      */
     @Override
     public void terminarTurno() {
-        if(numeroJugador == jugadores.size() - 1){
+        if (numeroJugador == jugadores.size() - 1) {
             numeroJugador = 0;
-        }else{
-            numeroJugador =+ 1;
+        } else {
+            numeroJugador = +1;
         }
-        
+
     }
 
     public List<Jugador> getJugadores() {
@@ -142,6 +153,7 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable{
     public void setJugadores(List<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
     public Tablero getTablero() {
         return tablero;
     }
@@ -168,7 +180,7 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable{
         this.tablero = (Tablero) lt;
         this.update();
     }
-    
+
     @Override
     public void actualizarMensajeError(String mensajeError) {
         System.out.println(mensajeError);
@@ -178,18 +190,49 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable{
     public void actualizarDatos() {
         this.update();
     }
-    
+
     @Override
     public void actualizarDatos(LogicaPartida lp) {
-        
+
     }
-    
-    public void subscribir(Observer subscriptor) {
-        this.subscriptor = subscriptor;
+
+    @Override
+    public void actualizarDatos(Conjunto conjunto) {
+        this.tablero.getConjuntos().add(conjunto);
+
     }
-    
-    public void update(){
-        this.subscriptor.notificar();
+
+    @Override
+    public void actualizarDatos(String s) {
+        this.mensaje = s;
+        update();
     }
-    
+
+    public void update() {
+        notificar();
+    }
+
+    @Override
+    public String obtenerMensaje() {
+        return this.mensaje;
+    }
+
+    @Override
+    public void notificar() {
+        this.observadores.forEach((observador) -> {
+            observador.notificar(this);
+        });
+    }
+
+    @Override
+    public void agregarObservador(Observador observador) {
+        this.observadores.add(observador);
+    }
+
+    @Override
+    public LogicaMazo obtenerLogicaMazoJugadorActual() {
+        Jugador jugador = obtenerJugador();
+        return jugador.getMazo();
+    }
+
 }

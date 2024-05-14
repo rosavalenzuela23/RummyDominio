@@ -1,10 +1,9 @@
-
 package DOMINIO;
 
 /**
- * 
+ *
  */
-public class Ficha implements Cloneable{
+public class Ficha implements Cloneable {
 
     /**
      * Default constructor
@@ -14,12 +13,13 @@ public class Ficha implements Cloneable{
 
     /**
      * Método para hacer una copia de las fichas
+     *
      * @return
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-    
+
 }
