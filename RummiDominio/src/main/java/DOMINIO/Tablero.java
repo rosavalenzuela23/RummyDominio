@@ -86,7 +86,7 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
     private List<LogicaConjunto> obtenerLogicasConjuntos(){
         
         List<LogicaConjunto> lc = new ArrayList<>();
-        for (LogicaConjunto logicaConjunto : this.conjuntos) {
+        for (LogicaConjunto logicaConjunto : obtenerConjuntosMarcados()) {
             lc.add(logicaConjunto);
         }
      
@@ -101,5 +101,15 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
     @Override
     public void desmarcarConjuntos() {
         System.out.println("estan desmarcados los conjuntos");
+    }
+
+    private List<Conjunto> obtenerConjuntosMarcados() {
+        List<Conjunto> conjuntosMarcados = new ArrayList<>();
+        for (Conjunto conjunto : conjuntos) {
+            if(conjunto.isMarcado()){
+                conjuntosMarcados.add(conjunto);
+            }
+        }
+        return conjuntosMarcados;
     }
 }

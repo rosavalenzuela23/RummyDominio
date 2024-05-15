@@ -32,6 +32,7 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
      *
      */
     private List<Ficha> fichas;
+    private boolean marcado;
 
     /**
      * Método para hacer una copia del conjunto

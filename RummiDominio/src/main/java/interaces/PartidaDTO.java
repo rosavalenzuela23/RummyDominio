@@ -3,19 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interaces;
-import DOMINIO.Conjunto;
-import java.util.List;
+
+import DOMINIO.Jugador;
+
 /**
  *
- * @author natsu
+ * @author marco
  */
-public interface LogicaTablero {
+public interface PartidaDTO {
     
-    public void eliminarConjunto();
-    
-    public List<Conjunto> validarConjuntos();
-    
-    public void desmarcarConjuntos();
-    
-    
+    public Jugador obtenerJugador();
 }
