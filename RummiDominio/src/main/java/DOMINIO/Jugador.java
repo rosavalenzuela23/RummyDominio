@@ -68,6 +68,9 @@ public class Jugador implements LogicaJugador, Cloneable {
         return this.esPrimerTurno;
     }
 
+    public boolean tieneFichas(){
+        return this.mazo.getFichas().isEmpty();
+    }
     /**
      * 
      */

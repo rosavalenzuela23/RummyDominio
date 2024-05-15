@@ -5,6 +5,7 @@
 package interaces;
 
 import DOMINIO.Conjunto;
+import java.util.List;
 
 /**
  *
@@ -21,5 +22,7 @@ public interface LogicaConjunto {
     public boolean validarConjunto();
 
     public boolean validar30Puntos();
+    
+    public void desmarcarConjunto();
 
 }

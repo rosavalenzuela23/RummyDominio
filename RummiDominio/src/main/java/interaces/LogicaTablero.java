@@ -17,5 +17,5 @@ public interface LogicaTablero {
     
     public void desmarcarConjuntos();
     
-    
+    public boolean validar30Puntos();
 }

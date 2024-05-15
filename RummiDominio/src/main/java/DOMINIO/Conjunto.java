@@ -72,7 +72,13 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
      */
     @Override
     public boolean validar30Puntos() {
-        return true;
+        int numero = 0;
+        for (Ficha ficha : fichas) {
+            FichaNumerica fichaNumerica = (FichaNumerica) ficha; 
+            numero = fichaNumerica.getNumero();
+            numero=+numero;
+        }
+        return numero >=30;
     }
 
     /**
@@ -121,4 +127,8 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
         return new ConjuntoSecuencia(this);
     }
 
+    @Override
+    public void desmarcarConjunto(){
+        this.marcado = false;
+    }
 }
