@@ -11,6 +11,7 @@ public class ConjuntoGrupo extends Conjunto implements Cloneable {
      * Default constructor
      */
     public ConjuntoGrupo() {
+        super();
     }
 
     public ConjuntoGrupo(Conjunto conjunto) {

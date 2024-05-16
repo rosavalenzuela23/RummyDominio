@@ -5,6 +5,8 @@
 package interaces;
 
 import DOMINIO.Conjunto;
+import DOMINIO.Ficha;
+import java.util.Map;
 import java.util.List;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
@@ -16,7 +18,7 @@ public interface LogicaConjunto {
 
     public Conjunto verificarColoresFicha();
 
-    public void agregarFicha();
+    public Conjunto agregarFicha(Ficha ficha, boolean delante);
 
     public Conjunto verificarColorFicha();
 
@@ -25,5 +27,7 @@ public interface LogicaConjunto {
     public boolean validar30Puntos() throws PuntosNoValidosException;
     
     public void desmarcarConjunto();
+
+    public List<List<Ficha>> dividirConjunto(Map<String, Integer> periodo);
 
 }

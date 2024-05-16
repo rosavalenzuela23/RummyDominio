@@ -7,7 +7,9 @@ package DOMINIO;
 import interaces.ConjuntoDTO;
 import interaces.LogicaConjunto;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
 /**
@@ -15,17 +17,23 @@ import exceptions.PuntosNoValidosException;
  */
 public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
 
+    private List<Ficha> fichas;
+    private boolean marcado;
+
     /**
      * Default constructor
      */
     public Conjunto() {
+        this.marcado = true;
     }
 
     public Conjunto(Conjunto conjunto) {
+        this();
         this.fichas = conjunto.getFichas();
     }
 
     public Conjunto(List<Ficha> fichas) {
+        this();
         this.fichas = fichas;
     }
 
@@ -33,7 +41,6 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
      *
      */
     private List<Ficha> fichas;
-    private boolean marcado;
 
     /**
      * Método para hacer una copia del conjunto
@@ -65,15 +72,6 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
         this.fichas = fichas;
     }
 
-    public boolean isMarcado() {
-        return marcado;
-    }
-
-    public void setMarcado(boolean marcado) {
-        this.marcado = marcado;
-    }
-
-    
     /**
      * Método que valida sí el conjunto es igual o mayor de 30 puntos en la
      * sumatoria de las fichas
@@ -117,8 +115,15 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
     }
 
     @Override
-    public void agregarFicha() {
+    public Conjunto agregarFicha(Ficha ficha, boolean delante) {
 
+        if (delante) {
+            fichas.addFirst(ficha);
+        } else {
+            fichas.addLast(ficha);
+        }
+
+        return this.verificarColorFicha();
     }
 
     @Override
@@ -150,4 +155,21 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
     public void desmarcarConjunto(){
         this.marcado = false;
     }
+    @Override
+    public List<List<Ficha>> dividirConjunto(Map<String, Integer> periodo) {
+        int inicio = periodo.get("inicio");
+        int termino = periodo.get("final");
+        List<List<Ficha>> conjuntos = new LinkedList();
+
+        List<Ficha> conjunto1 = new ArrayList(), conjunto2 = new ArrayList();
+
+        for (int i = 0; i < this.fichas.size(); i++) {
+
+        }
+
+        conjuntos.add(this.fichas.subList(inicio, termino));
+
+        return conjuntos;
+    }
+
 }

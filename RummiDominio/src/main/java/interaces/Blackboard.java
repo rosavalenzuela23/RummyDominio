@@ -18,10 +18,14 @@ public interface Blackboard {
 
     public void actualizarDatos(String s);
 
-    public void actualizarDatos(Conjunto conjunto);
+    public void actualizarDatos(Conjunto conjunto, String sig);
 
     public String obtenerMensaje();
 
     public LogicaMazo obtenerLogicaMazoJugadorActual();
+
+    public LogicaJugador obtenerLogicaJugadorActual();
+
+    public LogicaTablero obtenerLogicaTablero();
 
 }

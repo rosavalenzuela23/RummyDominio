@@ -3,6 +3,7 @@ package DOMINIO;
 import arqui.util.PartidaSnapshot;
 import exceptions.DominioException;
 import interaces.Blackboard;
+import interaces.LogicaJugador;
 import interaces.LogicaMazo;
 import interaces.LogicaPartida;
 import interaces.PartidaDTO;
@@ -203,9 +204,10 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     }
 
     @Override
-    public void actualizarDatos(Conjunto conjunto) {
+    public void actualizarDatos(Conjunto conjunto, String sig) {
+        this.mensaje = sig;
         this.tablero.getConjuntos().add(conjunto);
-
+        update();
     }
 
     @Override
@@ -239,6 +241,16 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     public LogicaMazo obtenerLogicaMazoJugadorActual() {
         Jugador jugador = obtenerJugador();
         return jugador.getMazo();
+    }
+
+    @Override
+    public LogicaJugador obtenerLogicaJugadorActual() {
+        return this.obtenerJugador();
+    }
+
+    @Override
+    public LogicaTablero obtenerLogicaTablero() {
+        return this.tablero;
     }
 
 }

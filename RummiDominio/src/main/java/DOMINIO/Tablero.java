@@ -1,4 +1,3 @@
-
 package DOMINIO;
 
 import exceptions.ConjuntoNoValidoException;
@@ -12,13 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
+ *
  */
-public class Tablero implements Serializable, LogicaTablero, Cloneable{
+public class Tablero implements Serializable, LogicaTablero, Cloneable {
 
     private static Tablero instancia;
     private List<Conjunto> conjuntos;
-    
+
     /**
      * Default constructor
      */
@@ -28,52 +27,55 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
 
     /**
      * Método singlenton que regresa la instancia del tablero
-     * @return el tablero instanciado 
+     *
+     * @return el tablero instanciado
      */
-    public static Tablero obtenerInstancia(){
-        if(Tablero.instancia == null){
+    public static Tablero obtenerInstancia() {
+        if (Tablero.instancia == null) {
             Tablero.instancia = new Tablero();
         }
         return Tablero.instancia;
     }
-    
+
     /**
      * Método para hacer una copia del tablero
+     *
      * @return
-     * @throws CloneNotSupportedException 
+     * @throws CloneNotSupportedException
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Tablero copia = new Tablero(); //Clonación superficial
-        
+
         //Clonación profunda
         for (Conjunto conjunto : this.conjuntos) {
             copia.conjuntos.add((Conjunto) conjunto.clone());
         }
         return copia;
     }
-    
-    public void setConjuntos(List<Conjunto> conjuntos){
+
+    public void setConjuntos(List<Conjunto> conjuntos) {
         this.conjuntos = conjuntos;
     }
-    
-    public List<Conjunto> getConjuntos(){
+
+    public List<Conjunto> getConjuntos() {
         return this.conjuntos;
     }
+
     /**
-     * 
+     *
      */
     public void realizarMovimiento() {
         // TODO implement here    
     }
 
     /**
-     * 
+     *
      */
     public void verificarMovimientosCorrectos() {
         // TODO implement here
     }
-    
+
     /**
      * 
      * @return 
@@ -88,19 +90,19 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
         return this.conjuntos;
     }
 
-    private List<LogicaConjunto> obtenerLogicasConjuntos(){
-        
+    private List<LogicaConjunto> obtenerLogicasConjuntos() {
+
         List<LogicaConjunto> lc = new ArrayList<>();
         for (LogicaConjunto logicaConjunto : this.conjuntos) {
             lc.add(logicaConjunto);
         }
-     
+
         return lc;
     }
-    
+
     @Override
-    public void eliminarConjunto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void eliminarConjunto(Conjunto conjunto) {
+        this.conjuntos.remove(conjunto);
     }
 
     @Override
