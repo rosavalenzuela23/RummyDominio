@@ -28,4 +28,8 @@ public interface Blackboard {
 
     public LogicaTablero obtenerLogicaTablero();
 
+    public String obtenerMensajeError();
+
+    public boolean hayMensajeError();
+
 }

@@ -7,8 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import interaces.LogicaTablero;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
 
 /**
  *
@@ -35,6 +34,10 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
             Tablero.instancia = new Tablero();
         }
         return Tablero.instancia;
+    }
+
+    public static LogicaTablero obtenerLogica() {
+        return Tablero.obtenerInstancia();
     }
 
     /**
@@ -77,13 +80,12 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
     }
 
     /**
-     * 
-     * @return 
-     * @throws exceptions.ConjuntoNoValidoException 
+     *
+     * @return @throws exceptions.ConjuntoNoValidoException
      */
     @Override
     public List<Conjunto> validarConjuntos() throws ConjuntoNoValidoException {
-        
+
         for (LogicaConjunto conjunto : obtenerLogicasConjuntos()) {
             conjunto.validarConjunto();
         }
@@ -116,7 +118,7 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
     private List<Conjunto> obtenerConjuntosMarcados() {
         List<Conjunto> conjuntosMarcados = new ArrayList<>();
         for (Conjunto conjunto : conjuntos) {
-            if(!conjunto.isMarcado()){
+            if (!conjunto.isMarcado()) {
                 conjuntosMarcados.add(conjunto);
             }
         }
@@ -124,12 +126,33 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
     }
 
     @Override
-    public boolean validar30Puntos() throws PuntosNoValidosException{
-       
-       List<LogicaConjunto> lcLista = new ArrayList<>();
+    public void dividirConjunto(LogicaConjunto conjunto, Map<String, Integer> periodo) {
+
+        this.eliminarConjunto((Conjunto) conjunto);
+
+        for (List<Ficha> fichas : conjunto.dividir(periodo)) {
+            //Este conjunto es nomas para guardarlo en lo que lo verificamos
+            ConjuntoGrupo tmp = new ConjuntoGrupo(fichas);
+
+            this.conjuntos.add(tmp.verificarColorFicha());
+
+        }
+
+    }
+
+    @Override
+    public boolean validar30Puntos() throws PuntosNoValidosException {
+
+        List<LogicaConjunto> lcLista = new ArrayList<>();
         for (LogicaConjunto logicaConjunto : obtenerConjuntosMarcados()) {
             logicaConjunto.validar30Puntos();
         }
-       return true;
+        return true;
+    }
+
+    @Override
+    public void agregarFichaConjunto(Conjunto c, Ficha ficha, boolean delante) {
+        LogicaConjunto logica = this.conjuntos.get(this.conjuntos.indexOf(c));
+        logica.agregarFicha(ficha, delante);
     }
 }

@@ -10,13 +10,12 @@ import java.util.Map;
 import java.util.List;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
+
 /**
  *
  * @author natsu
  */
 public interface LogicaConjunto {
-
-    public Conjunto verificarColoresFicha();
 
     public Conjunto agregarFicha(Ficha ficha, boolean delante);
 
@@ -25,9 +24,9 @@ public interface LogicaConjunto {
     public boolean validarConjunto() throws ConjuntoNoValidoException;
 
     public boolean validar30Puntos() throws PuntosNoValidosException;
-    
+
     public void desmarcarConjunto();
 
-    public List<List<Ficha>> dividirConjunto(Map<String, Integer> periodo);
+    public List<List<Ficha>> dividir(Map<String, Integer> periodo);
 
 }

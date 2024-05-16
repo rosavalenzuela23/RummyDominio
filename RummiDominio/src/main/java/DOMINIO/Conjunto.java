@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
+
 /**
  *
  */
@@ -101,6 +102,7 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
 
         return puntosValidos;
     }
+
     /**
      * Método abstracto validarConjuntos() el cual es implementado por la clase
      * ConjuntoGrupo o ConjuntoSecuencia
@@ -111,11 +113,6 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
      */
     @Override
     public abstract boolean validarConjunto() throws ConjuntoNoValidoException;
-
-    @Override
-    public Conjunto verificarColoresFicha() {
-        return null;
-    }
 
     @Override
     public Conjunto agregarFicha(Ficha ficha, boolean delante) {
@@ -155,11 +152,12 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
     }
 
     @Override
-    public void desmarcarConjunto(){
+    public void desmarcarConjunto() {
         this.marcado = false;
     }
+
     @Override
-    public List<List<Ficha>> dividirConjunto(Map<String, Integer> periodo) {
+    public List<List<Ficha>> dividir(Map<String, Integer> periodo) {
         int inicio = periodo.get("inicio");
         int termino = periodo.get("final");
         List<List<Ficha>> conjuntos = new LinkedList();

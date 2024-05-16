@@ -26,6 +26,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     private List<Jugador> jugadores;
     private int numeroJugador;
     private String mensaje;
+    private String mensajeError = null;
 
     /**
      * Constructor privado
@@ -176,7 +177,6 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
         this.numeroJugador = numeroJugador;
     }
 
-    
     @Override
     public String toString() {
         return "Partida{" + "tablero=" + tablero + ", pila=" + pila + ", jugadores=" + jugadores + '}';
@@ -190,7 +190,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
 
     @Override
     public void actualizarMensajeError(String mensajeError) {
-        System.out.println(mensajeError);
+        this.mensajeError = mensajeError;
     }
 
     @Override
@@ -228,7 +228,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     @Override
     public void notificar() {
         this.observadores.forEach((observador) -> {
-           observador.notificar(this);
+            observador.notificar(this);
         });
     }
 
@@ -251,6 +251,18 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     @Override
     public LogicaTablero obtenerLogicaTablero() {
         return this.tablero;
+    }
+
+    @Override
+    public String obtenerMensajeError() {
+
+        return this.mensajeError;
+
+    }
+
+    @Override
+    public boolean hayMensajeError() {
+        return this.mensaje != null;
     }
 
 }
