@@ -4,6 +4,8 @@
  */
 package interaces;
 import DOMINIO.Conjunto;
+import exceptions.ConjuntoNoValidoException;
+import exceptions.PuntosNoValidosException;
 import java.util.List;
 /**
  *
@@ -13,9 +15,9 @@ public interface LogicaTablero {
     
     public void eliminarConjunto();
     
-    public List<Conjunto> validarConjuntos();
+    public List<Conjunto> validarConjuntos() throws ConjuntoNoValidoException;
     
     public void desmarcarConjuntos();
     
-    public boolean validar30Puntos();
+    public boolean validar30Puntos() throws PuntosNoValidosException;
 }

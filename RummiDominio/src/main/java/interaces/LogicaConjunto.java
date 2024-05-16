@@ -6,7 +6,8 @@ package interaces;
 
 import DOMINIO.Conjunto;
 import java.util.List;
-
+import exceptions.ConjuntoNoValidoException;
+import exceptions.PuntosNoValidosException;
 /**
  *
  * @author natsu
@@ -19,9 +20,9 @@ public interface LogicaConjunto {
 
     public Conjunto verificarColorFicha();
 
-    public boolean validarConjunto();
+    public boolean validarConjunto() throws ConjuntoNoValidoException;
 
-    public boolean validar30Puntos();
+    public boolean validar30Puntos() throws PuntosNoValidosException;
     
     public void desmarcarConjunto();
 

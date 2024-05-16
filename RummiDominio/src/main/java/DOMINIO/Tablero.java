@@ -1,11 +1,15 @@
 
 package DOMINIO;
 
+import exceptions.ConjuntoNoValidoException;
+import exceptions.PuntosNoValidosException;
 import interaces.LogicaConjunto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import interaces.LogicaTablero;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -73,9 +77,10 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
     /**
      * 
      * @return 
+     * @throws exceptions.ConjuntoNoValidoException 
      */
     @Override
-    public List<Conjunto> validarConjuntos() {
+    public List<Conjunto> validarConjuntos() throws ConjuntoNoValidoException {
         
         for (LogicaConjunto conjunto : obtenerLogicasConjuntos()) {
             conjunto.validarConjunto();
@@ -86,7 +91,7 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
     private List<LogicaConjunto> obtenerLogicasConjuntos(){
         
         List<LogicaConjunto> lc = new ArrayList<>();
-        for (LogicaConjunto logicaConjunto : obtenerConjuntosMarcados()) {
+        for (LogicaConjunto logicaConjunto : this.conjuntos) {
             lc.add(logicaConjunto);
         }
      
@@ -109,17 +114,16 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable{
     private List<Conjunto> obtenerConjuntosMarcados() {
         List<Conjunto> conjuntosMarcados = new ArrayList<>();
         for (Conjunto conjunto : conjuntos) {
-//            if(conjunto.isMarcado()){
-//                conjuntosMarcados.add(conjunto);
-//            }
+            if(!conjunto.isMarcado()){
+                conjuntosMarcados.add(conjunto);
+            }
         }
         return conjuntosMarcados;
     }
 
     @Override
-    public boolean validar30Puntos() {
+    public boolean validar30Puntos() throws PuntosNoValidosException{
        
-       LogicaConjunto lc = (LogicaConjunto) this.conjuntos;
        List<LogicaConjunto> lcLista = new ArrayList<>();
         for (LogicaConjunto logicaConjunto : obtenerConjuntosMarcados()) {
             logicaConjunto.validar30Puntos();

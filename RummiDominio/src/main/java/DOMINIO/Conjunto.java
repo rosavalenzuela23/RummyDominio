@@ -8,7 +8,8 @@ import interaces.ConjuntoDTO;
 import interaces.LogicaConjunto;
 import java.util.ArrayList;
 import java.util.List;
-
+import exceptions.ConjuntoNoValidoException;
+import exceptions.PuntosNoValidosException;
 /**
  *
  */
@@ -64,23 +65,41 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
         this.fichas = fichas;
     }
 
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
+    }
+
+    
     /**
      * Método que valida sí el conjunto es igual o mayor de 30 puntos en la
      * sumatoria de las fichas
      *
      * @return true en caso de completar 30 puntos o más, false caso contrario
+     * @throws exceptions.PuntosNoValidosException
      */
     @Override
-    public boolean validar30Puntos() {
-        int numero = 0;
-        for (Ficha ficha : fichas) {
-            FichaNumerica fichaNumerica = (FichaNumerica) ficha; 
-            numero = fichaNumerica.getNumero();
-            numero=+numero;
-        }
-        return numero >=30;
-    }
+    public boolean validar30Puntos() throws PuntosNoValidosException {
+        int sumaPuntos = 0;
 
+        for (Ficha ficha : fichas) {
+            if (ficha instanceof FichaNumerica) {
+                FichaNumerica fichaNumerica = (FichaNumerica) ficha;
+                sumaPuntos += fichaNumerica.getNumero();
+            }
+        }
+
+        boolean puntosValidos = sumaPuntos >= 30;
+
+        if (!puntosValidos) {
+            throw new PuntosNoValidosException("puntos no validos");
+        }
+
+        return puntosValidos;
+    }
     /**
      * Método abstracto validarConjuntos() el cual es implementado por la clase
      * ConjuntoGrupo o ConjuntoSecuencia
@@ -90,7 +109,7 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
      * contrario
      */
     @Override
-    public abstract boolean validarConjunto();
+    public abstract boolean validarConjunto() throws ConjuntoNoValidoException;
 
     @Override
     public Conjunto verificarColoresFicha() {

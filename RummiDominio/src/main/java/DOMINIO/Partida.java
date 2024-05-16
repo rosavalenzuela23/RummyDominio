@@ -5,6 +5,7 @@ import exceptions.DominioException;
 import interaces.Blackboard;
 import interaces.LogicaMazo;
 import interaces.LogicaPartida;
+import interaces.PartidaDTO;
 import interaces.LogicaTablero;
 import interaces.Observador;
 import interaces.Publicador;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  *
  */
-public class Partida implements Blackboard, LogicaPartida, Cloneable, Publicador {
+public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable, Publicador {
 
     private static Partida instancia;
     protected final List<Observador> observadores;
@@ -170,6 +171,11 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable, Publicador
         this.pila = pila;
     }
 
+    public void setNumeroJugador(int numeroJugador) {
+        this.numeroJugador = numeroJugador;
+    }
+
+    
     @Override
     public String toString() {
         return "Partida{" + "tablero=" + tablero + ", pila=" + pila + ", jugadores=" + jugadores + '}';
@@ -220,7 +226,7 @@ public class Partida implements Blackboard, LogicaPartida, Cloneable, Publicador
     @Override
     public void notificar() {
         this.observadores.forEach((observador) -> {
-            observador.notificar(this);
+           observador.notificar(this);
         });
     }
 

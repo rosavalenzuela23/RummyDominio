@@ -1,5 +1,6 @@
 package DOMINIO;
 
+import exceptions.ConjuntoNoValidoException;
 import java.util.List;
 
 /**
@@ -48,13 +49,13 @@ public class ConjuntoSecuencia extends Conjunto {
      * @return true es válido, false caso contrario
      */
     @Override
-    public boolean validarConjunto() {
+    public boolean validarConjunto() throws ConjuntoNoValidoException{
 
         List<Ficha> fichas = super.getFichas();
 
         //El conjutno esta vacío o el conjunto es de un size menor al permitido
         if (fichas.isEmpty() || fichas.size() < 2) {
-            return false;
+            throw new ConjuntoNoValidoException("conjunto no valido");
         }
 
         int valorActual = 0;
@@ -84,7 +85,7 @@ public class ConjuntoSecuencia extends Conjunto {
 
             if (valorSiguiente != valorActual + 1) {
 
-                return false;
+                throw new ConjuntoNoValidoException("conjunto no valido");
             }
 
             valorActual = valorSiguiente; // Mover el valor actual al siguiente número

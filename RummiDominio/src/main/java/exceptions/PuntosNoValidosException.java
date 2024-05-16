@@ -8,12 +8,9 @@ package exceptions;
  *
  * @author marco
  */
-public class ConjuntoNoValidoException extends DominioException {
-   
+public class PuntosNoValidosException extends DominioException{
     
-    
-    public ConjuntoNoValidoException(String message) {
+    public PuntosNoValidosException(String message) {
         super(message);
     }
 }
-
