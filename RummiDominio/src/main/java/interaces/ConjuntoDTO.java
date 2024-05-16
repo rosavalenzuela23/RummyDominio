@@ -17,4 +17,8 @@ public interface ConjuntoDTO {
 
     public List<Ficha> getFichas();
 
+    public boolean isMarcado();
+
+    public void setMarcado(boolean marcado);
+
 }

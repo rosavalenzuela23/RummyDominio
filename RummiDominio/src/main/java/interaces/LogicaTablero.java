@@ -14,12 +14,12 @@ import java.util.List;
  * @author natsu
  */
 public interface LogicaTablero {
-    
-    public void eliminarConjunto();
-    
+
+    public void eliminarConjunto(Conjunto cojunto);
+
     public List<Conjunto> validarConjuntos() throws ConjuntoNoValidoException;
-    
+
     public void desmarcarConjuntos();
-    
+
     public boolean validar30Puntos() throws PuntosNoValidosException;
 }

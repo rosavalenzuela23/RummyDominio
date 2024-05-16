@@ -38,11 +38,6 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
     }
 
     /**
-     *
-     */
-    private List<Ficha> fichas;
-
-    /**
      * Método para hacer una copia del conjunto
      *
      * @return
@@ -70,6 +65,14 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
     @Override
     public void setFichas(List<Ficha> fichas) {
         this.fichas = fichas;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 
     /**
