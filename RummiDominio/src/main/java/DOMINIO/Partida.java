@@ -144,7 +144,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
         if (numeroJugador == jugadores.size() - 1) {
             numeroJugador = 0;
         } else {
-            numeroJugador = +1;
+            numeroJugador +=1;
         }
 
     }
