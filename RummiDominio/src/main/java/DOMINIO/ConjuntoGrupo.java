@@ -1,12 +1,13 @@
 package DOMINIO;
 
 import exceptions.ConjuntoNoValidoException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  */
-public class ConjuntoGrupo extends Conjunto implements Cloneable {
+public class ConjuntoGrupo extends Conjunto implements Cloneable, Serializable {
 
     /**
      * Default constructor

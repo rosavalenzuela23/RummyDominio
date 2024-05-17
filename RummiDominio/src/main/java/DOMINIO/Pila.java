@@ -5,30 +5,33 @@
 package DOMINIO;
 
 import exceptions.DominioException;
+import interaces.PilaDTO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  */
-public class Pila {
+public class Pila implements Serializable, PilaDTO {
 
     private static Pila instancia;
     private List<Ficha> fichas;
-    
+
     /**
      * Default constructor
      */
     private Pila() {
         this.fichas = new ArrayList<>();
     }
-    
+
     /**
      * Método singleton que regresa la instancia de la pila en la partida
+     *
      * @return la instancia de la Pila
      */
-    public static Pila obtenerInstancia(){
-        if(Pila.instancia == null){
+    public static Pila obtenerInstancia() {
+        if (Pila.instancia == null) {
             Pila.instancia = new Pila();
         }
         return Pila.instancia;
@@ -37,30 +40,31 @@ public class Pila {
     @Override
     public Object clone() throws CloneNotSupportedException {
         Pila copia = new Pila(); //Clonación superficial
-        
+
         // Clonación profunda
         for (Ficha ficha : this.fichas) {
-            Ficha fichaClonada = (Ficha) ficha.clone(); 
-            copia.fichas.add(fichaClonada); 
+            Ficha fichaClonada = (Ficha) ficha.clone();
+            copia.fichas.add(fichaClonada);
         }
         return copia;
     }
-    
+
     /**
-     * 
+     *
      */
     public void tomarFicha() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void pasarTurno() {
         // TODO implement here
     }
+
     /**
-     * 
+     *
      * @param jugador
      * @throws DominioException
      */
@@ -70,11 +74,11 @@ public class Pila {
         }
         System.out.println("La lista de fichas existe y no está vacía.");
         this.obtenerFicha(jugador);
-    }    
+    }
 
     /**
-     * 
-     * @param jugador 
+     *
+     * @param jugador
      */
     public void obtenerFicha(Jugador jugador) {
 //        jugador.agregarFichaAMazo(this.fichas.getLast());
@@ -88,7 +92,5 @@ public class Pila {
     public void setFichas(List<Ficha> fichas) {
         this.fichas = fichas;
     }
-    
-    
 
 }

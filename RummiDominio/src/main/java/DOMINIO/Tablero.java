@@ -7,12 +7,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import interaces.LogicaTablero;
+import interaces.TableroDTO;
 import java.util.Map;
 
 /**
  *
  */
-public class Tablero implements Serializable, LogicaTablero, Cloneable {
+public class Tablero implements Serializable, LogicaTablero, Cloneable, TableroDTO {
 
     private static Tablero instancia;
     private List<Conjunto> conjuntos;
@@ -57,10 +58,12 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
         return copia;
     }
 
+    @Override
     public void setConjuntos(List<Conjunto> conjuntos) {
         this.conjuntos = conjuntos;
     }
 
+    @Override
     public List<Conjunto> getConjuntos() {
         return this.conjuntos;
     }

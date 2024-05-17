@@ -12,12 +12,13 @@ import java.util.List;
 import java.util.Map;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  */
-public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
+public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO, Serializable {
 
     private List<Ficha> fichas;
     private boolean marcado;

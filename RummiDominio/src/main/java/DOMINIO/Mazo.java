@@ -1,20 +1,20 @@
-
 package DOMINIO;
 
 import interaces.LogicaMazo;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ *
  */
-public class Mazo implements LogicaMazo, Cloneable {
+public class Mazo implements LogicaMazo, Cloneable, Serializable {
 
     /**
-     * 
+     *
      */
     private List<Ficha> fichas;
-    
+
     /**
      * Default constructor
      */
@@ -22,7 +22,7 @@ public class Mazo implements LogicaMazo, Cloneable {
         this.fichas = new ArrayList<>();
     }
 
-     @Override
+    @Override
     public Object clone() throws CloneNotSupportedException {
         Mazo copia = (Mazo) super.clone(); // Clonación superficial
 
@@ -30,14 +30,15 @@ public class Mazo implements LogicaMazo, Cloneable {
         copia.fichas = new ArrayList<>(); //Lista para guardar las fichas clonadas
         for (Ficha ficha : this.fichas) {
             Ficha fichaClonada = (Ficha) ficha.clone(); //Clonar la ficha
-            copia.fichas.add(fichaClonada); 
+            copia.fichas.add(fichaClonada);
         }
 
         return copia;
     }
-    
+
     /**
      * Método que comprueba sí el mazo del jugador tiene fichas
+     *
      * @return true si tiene fichas, false caso contrario
      */
     public boolean tieneFichas() {
@@ -46,7 +47,7 @@ public class Mazo implements LogicaMazo, Cloneable {
     }
 
     /**
-     * 
+     *
      * @param ficha la ficha que se va a eliminar del mazo
      */
     public void agregarFichaAMazo(Ficha ficha) {
@@ -70,5 +71,5 @@ public class Mazo implements LogicaMazo, Cloneable {
     public void eliminarFichasJugador(Ficha ficha) {
         fichas.remove(ficha);
     }
-    
+
 }

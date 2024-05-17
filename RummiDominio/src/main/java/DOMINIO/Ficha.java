@@ -1,9 +1,11 @@
 package DOMINIO;
 
+import java.io.Serializable;
+
 /**
  *
  */
-public class Ficha implements Cloneable {
+public class Ficha implements Cloneable, Serializable {
 
     /**
      * Default constructor

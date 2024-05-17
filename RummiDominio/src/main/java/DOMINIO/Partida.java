@@ -10,6 +10,7 @@ import interaces.PartidaDTO;
 import interaces.LogicaTablero;
 import interaces.Observador;
 import interaces.Publicador;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  *
  */
-public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable, Publicador {
+public class Partida implements Serializable, Blackboard, LogicaPartida, PartidaDTO, Cloneable, Publicador {
 
     private static Partida instancia;
     protected final List<Observador> observadores;
@@ -265,6 +266,10 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
     @Override
     public boolean hayMensajeError() {
         return this.mensajeError != null;
+    }
+
+    public int getNumeroJugador() {
+        return numeroJugador;
     }
 
 }

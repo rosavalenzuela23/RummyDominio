@@ -1,12 +1,13 @@
 package DOMINIO;
 
 import interaces.FichaDTO;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  */
-public class FichaNumerica extends Ficha implements FichaDTO {
+public class FichaNumerica extends Ficha implements FichaDTO, Serializable {
 
     /**
      * Default constructor

@@ -1,12 +1,13 @@
 package DOMINIO;
 
 import exceptions.ConjuntoNoValidoException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  */
-public class ConjuntoSecuencia extends Conjunto {
+public class ConjuntoSecuencia extends Conjunto implements Serializable {
 
     /**
      * Default constructor
@@ -49,7 +50,7 @@ public class ConjuntoSecuencia extends Conjunto {
      * @return true es válido, false caso contrario
      */
     @Override
-    public boolean validarConjunto() throws ConjuntoNoValidoException{
+    public boolean validarConjunto() throws ConjuntoNoValidoException {
 
         List<Ficha> fichas = super.getFichas();
 
