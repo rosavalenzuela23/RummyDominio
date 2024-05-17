@@ -4,6 +4,8 @@
  */
 package interaces;
 
+import DOMINIO.Ficha;
+
 /**
  *
  * @author natsu
@@ -11,5 +13,6 @@ package interaces;
 public interface LogicaJugador {
     
     public boolean esPrimerTurno();
+    public void agregarFichaAMazo(Ficha ficha);
     
 }

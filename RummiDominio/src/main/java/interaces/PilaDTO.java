@@ -4,10 +4,14 @@
  */
 package interaces;
 
+import DOMINIO.Ficha;
+
 /**
  *
  * @author natsu
  */
 public interface PilaDTO {
+    
+    public Ficha obtenerFicha();
     
 }

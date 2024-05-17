@@ -5,15 +5,19 @@
 package DOMINIO;
 
 import exceptions.DominioException;
+import exceptions.PozoFichasInexistentesException;
+import interaces.LogicaPila;
 import interaces.PilaDTO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  */
-public class Pila implements Serializable, PilaDTO {
+public class Pila implements Serializable, LogicaPila, PilaDTO, Cloneable {
 
     private static Pila instancia;
     private List<Ficha> fichas;
@@ -66,13 +70,14 @@ public class Pila implements Serializable, PilaDTO {
     /**
      *
      * @param jugador
-     * @throws DominioException
      */
-    public void validarFichasExistentesPozo(Jugador jugador) throws DominioException {
+    @Override
+    public boolean validarFichasExistentesPozo() throws PozoFichasInexistentesException {
         if (fichas == null || fichas.isEmpty()) {
-            throw new DominioException("La lista de fichas está vacía o nula.");
+            throw new PozoFichasInexistentesException("La lista de fichas está vacía o nula.");
         }
         System.out.println("La lista de fichas existe y no está vacía.");
+        return true;
         this.obtenerFicha(jugador);
     }
 
@@ -91,6 +96,16 @@ public class Pila implements Serializable, PilaDTO {
 
     public void setFichas(List<Ficha> fichas) {
         this.fichas = fichas;
+    }
+
+    /**
+     * Obtiene la ultima ficha de la lista de fichas.
+     *
+     * @return
+     */
+    @Override
+    public Ficha obtenerFicha() {
+        return fichas.getLast();
     }
 
 }

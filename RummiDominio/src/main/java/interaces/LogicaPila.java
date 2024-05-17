@@ -4,10 +4,15 @@
  */
 package interaces;
 
+import exceptions.PozoFichasInexistentesException;
+
+
 /**
  *
  * @author natsu
  */
-public interface LogicaPila {
+public interface LogicaPila{
+    
+    public boolean validarFichasExistentesPozo() throws PozoFichasInexistentesException;
     
 }
