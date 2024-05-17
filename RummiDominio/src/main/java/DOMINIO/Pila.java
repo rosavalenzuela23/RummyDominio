@@ -101,7 +101,7 @@ public class Pila implements Serializable, LogicaPila, PilaDTO, Cloneable {
      */
     @Override
     public Ficha obtenerFicha() {
-        return fichas.getLast();
+        return fichas.removeLast();
     }
 
 }

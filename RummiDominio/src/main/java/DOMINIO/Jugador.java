@@ -68,7 +68,7 @@ public class Jugador implements LogicaJugador, Cloneable, Serializable, JugadorD
     }
 
     public boolean tieneFichas() {
-        return this.mazo.getFichas().isEmpty();
+        return !this.mazo.getFichas().isEmpty();
     }
 
     /**
