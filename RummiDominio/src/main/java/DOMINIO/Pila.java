@@ -4,15 +4,12 @@
  */
 package DOMINIO;
 
-import exceptions.DominioException;
 import exceptions.PozoFichasInexistentesException;
 import interaces.LogicaPila;
 import interaces.PilaDTO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -78,7 +75,6 @@ public class Pila implements Serializable, LogicaPila, PilaDTO, Cloneable {
         }
         System.out.println("La lista de fichas existe y no está vacía.");
         return true;
-        this.obtenerFicha(jugador);
     }
 
     /**
