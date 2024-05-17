@@ -1,11 +1,12 @@
 package DOMINIO;
 
+import interaces.FichaDTO;
 import java.io.Serializable;
 
 /**
  *
  */
-public class Ficha implements Cloneable, Serializable {
+public class Ficha implements Cloneable, Serializable, FichaDTO {
 
     /**
      * Default constructor
@@ -22,6 +23,26 @@ public class Ficha implements Cloneable, Serializable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    @Override
+    public byte getNumero() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setNumero(byte numero) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public GrupoFicha getGrupoFicha() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setGrupoFicha(GrupoFicha grupoFicha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
