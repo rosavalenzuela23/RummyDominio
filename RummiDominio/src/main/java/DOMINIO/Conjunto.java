@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import exceptions.ConjuntoNoValidoException;
 import exceptions.PuntosNoValidosException;
+import java.util.Objects;
 
 /**
  *
@@ -30,12 +31,12 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
 
     public Conjunto(Conjunto conjunto) {
         this();
-        this.fichas = conjunto.getFichas();
+        this.fichas = new ArrayList(conjunto.getFichas());
     }
 
     public Conjunto(List<Ficha> fichas) {
         this();
-        this.fichas = fichas;
+        this.fichas = new ArrayList(fichas);
     }
 
     /**
@@ -166,11 +167,41 @@ public abstract class Conjunto implements LogicaConjunto, ConjuntoDTO {
 
         for (int i = 0; i < this.fichas.size(); i++) {
 
+            if (i >= inicio && i < termino) {
+                conjunto1.add(this.fichas.get(i));
+            } else {
+                conjunto2.add(this.fichas.get(i));
+            }
+
         }
 
-        conjuntos.add(this.fichas.subList(inicio, termino));
+        conjuntos.add(conjunto1);
+        conjuntos.add(conjunto2);
 
         return conjuntos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + Objects.hashCode(this.fichas);
+        hash = 43 * hash + (this.marcado ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        final Conjunto other = (Conjunto) obj;
+        if (this.marcado != other.marcado) {
+            return false;
+        }
+        return Objects.equals(this.fichas, other.fichas);
     }
 
 }

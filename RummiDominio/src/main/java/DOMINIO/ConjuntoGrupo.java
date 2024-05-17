@@ -1,4 +1,5 @@
 package DOMINIO;
+
 import exceptions.ConjuntoNoValidoException;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ConjuntoGrupo extends Conjunto implements Cloneable {
      * @return true es válido, false caso contrario
      */
     @Override
-    public boolean validarConjunto() throws ConjuntoNoValidoException{
+    public boolean validarConjunto() throws ConjuntoNoValidoException {
         List<Ficha> fichas = super.getFichas();
 
         //El conjunto esta vacío o el conjunto es de un size menor al permitido

@@ -152,7 +152,8 @@ public class Tablero implements Serializable, LogicaTablero, Cloneable {
 
     @Override
     public void agregarFichaConjunto(Conjunto c, Ficha ficha, boolean delante) {
-        LogicaConjunto logica = this.conjuntos.get(this.conjuntos.indexOf(c));
-        logica.agregarFicha(ficha, delante);
+        LogicaConjunto logica = new ConjuntoGrupo(c);
+        Conjunto conjuntoNuevo = logica.agregarFicha(ficha, delante);
+        this.conjuntos.add(conjuntoNuevo);
     }
 }

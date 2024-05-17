@@ -35,6 +35,8 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
         this.tablero = Tablero.obtenerInstancia();
         this.pila = Pila.obtenerInstancia();
 
+        this.jugadores = new ArrayList();
+
         observadores = new LinkedList();
 
     }
@@ -144,7 +146,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
         if (numeroJugador == jugadores.size() - 1) {
             numeroJugador = 0;
         } else {
-            numeroJugador +=1;
+            numeroJugador += 1;
         }
 
     }
@@ -262,7 +264,7 @@ public class Partida implements Blackboard, LogicaPartida, PartidaDTO, Cloneable
 
     @Override
     public boolean hayMensajeError() {
-        return this.mensaje != null;
+        return this.mensajeError != null;
     }
 
 }
